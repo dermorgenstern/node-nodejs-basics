@@ -1,7 +1,8 @@
 import { promises as fsasync } from "fs"
-const fs = import('fs');
+
 const checkIfFileExists = async path => !!(await fsasync.stat(path).catch(e => false));
-const createFile = async path => !!(await fsasync.writeFile(path, "I am fresh and young").catch(e => false));
+
+const createFile = async (path, text) => !!(await fsasync.writeFile(path, text).catch(e => false));
 
 
 const create = async () => {
@@ -13,7 +14,7 @@ const create = async () => {
     }
     else
     {
-        createFile(path);
+        createFile(path, "I am fresh and young");
     }
 };
 
